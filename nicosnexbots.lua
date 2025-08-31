@@ -397,7 +397,7 @@ local function updateSlider(inputX)
     local barAbsPos = sliderBar.AbsolutePosition.X
     local barAbsSize = sliderBar.AbsoluteSize.X
     local relativeX = math.clamp(inputX - barAbsPos, 0, barAbsSize)
-    local percent = if barAbsSize > 0 then relativeX / barAbsSize else 0
+    local percent = (barAbsSize > 0) and (relativeX / barAbsSize) or 0
     sliderValue = math.floor(sliderMin + (sliderMax - sliderMin) * percent + 0.5)
     local alpha = (sliderValue - sliderMin) / (sliderMax - sliderMin)
     fillBar.Size = UDim2.new(alpha, 0, 1, 0)
